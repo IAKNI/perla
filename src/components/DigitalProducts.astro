@@ -1,0 +1,77 @@
+---
+const products = [
+  {
+    title: 'Product Example 1',
+    desc: 'Description for your first digital product. This will be replaced with actual product details, deliverables, and value proposition.',
+    price: 'Free',
+    badge: 'Lead Magnet',
+    color: 'sage',
+  },
+  {
+    title: 'Product Example 2',
+    desc: 'Description for your flagship paid product. Include what\'s inside, how many recipes, guides, templates, and the transformation it delivers.',
+    price: '$39',
+    badge: 'Best Seller',
+    color: 'warm',
+  },
+  {
+    title: 'Product Example 3',
+    desc: 'Description for an additional digital product. Specify the duration, methodology, and science-backed approach behind this guide.',
+    price: '$29',
+    badge: 'New',
+    color: 'green',
+  },
+];
+---
+
+<section id="shop" class="bg-brand-warm-white py-[100px]">
+  <div class="max-w-[1200px] mx-auto px-7">
+    <div class="fade-up">
+      <span class="section-label">Digital Products</span>
+    </div>
+
+    <div class="fade-up delay-1 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-5 mt-4">
+      <h2 class="section-heading text-[36px] sm:text-[44px]">
+        Structured nutrition,<br />delivered instantly.
+      </h2>
+      <a href="/shop" class="pill pill-outline shrink-0">Browse All →</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-7 mt-14">
+      {products.map((p, i) => (
+        <div class={`fade-up delay-${i + 1}`}>
+          <div class="bg-brand-cream rounded-lg p-8 flex flex-col h-full relative border border-brand-border hover:border-brand-sage transition-colors">
+            <!-- Badge -->
+            {p.badge && (
+              <span class={`absolute top-5 right-5 font-sans text-[10px] tracking-[1.5px] uppercase text-white py-[5px] px-3 rounded-full font-semibold ${p.badge === 'Lead Magnet' ? 'bg-brand-sage' : 'bg-brand-dark'}`}>
+                {p.badge}
+              </span>
+            )}
+
+            <!-- Preview image -->
+            <div class="mb-5">
+              <div class={`placeholder-${p.color} rounded-md aspect-video flex items-center justify-center`}>
+                <span class="font-serif text-[14px] tracking-[2px] uppercase text-brand-dark/40">Preview</span>
+              </div>
+            </div>
+
+            <h3 class="font-serif text-[24px] text-brand-dark leading-tight mb-3 pr-16">
+              {p.title}
+            </h3>
+
+            <p class="body-text text-[14px] flex-1">{p.desc}</p>
+
+            <div class="mt-7 flex justify-between items-center">
+              <span class={`font-serif text-[28px] font-medium ${p.price === 'Free' ? 'text-brand-sage' : 'text-brand-dark'}`}>
+                {p.price}
+              </span>
+              <a href="#" class={`pill pill-sm ${p.price === 'Free' ? 'pill-sage' : 'pill-dark'}`}>
+                {p.price === 'Free' ? 'Download Free' : 'Get Access'}
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,58 @@
+---
+// Newsletter section - interactive form handled via client-side script
+---
+
+<section id="newsletter" class="bg-brand-dark py-[100px]">
+  <div class="max-w-[560px] mx-auto px-7 text-center">
+    <div class="fade-up">
+      <span class="section-label" style="color: #D4DBC8;">Stay Nourished</span>
+    </div>
+
+    <div class="fade-up delay-1">
+      <h2 class="font-serif text-[36px] sm:text-[40px] font-normal leading-tight text-white mt-4">
+        Weekly science.<br />Weekly recipes.<br />Zero fluff.
+      </h2>
+    </div>
+
+    <div class="fade-up delay-2">
+      <p class="font-sans text-[15px] leading-relaxed text-white/50 mt-5">
+        Join the newsletter for evidence-based nutrition insights, exclusive recipes, and
+        early access to new products and programs.
+      </p>
+    </div>
+
+    <!-- Form -->
+    <div class="fade-up delay-3 mt-9" id="newsletter-wrapper">
+      <div id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-[440px] mx-auto">
+        <input
+          type="email"
+          id="newsletter-email"
+          placeholder="your@email.com"
+          class="flex-1 py-3.5 px-5 rounded-full border border-white/15 bg-white/[0.06] text-white font-sans text-[14px] outline-none placeholder:text-white/30 focus:border-white/30 transition-colors"
+        />
+        <button id="newsletter-submit" class="pill pill-sage whitespace-nowrap">Subscribe</button>
+      </div>
+      <div id="newsletter-success" class="hidden font-sans text-brand-light-sage text-[15px]">
+        Welcome to the community ✦
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('newsletter-form');
+  const success = document.getElementById('newsletter-success');
+  const email = document.getElementById('newsletter-email') as HTMLInputElement;
+  const btn = document.getElementById('newsletter-submit');
+
+  btn?.addEventListener('click', () => {
+    if (email?.value && email.value.includes('@')) {
+      form?.classList.add('hidden');
+      success?.classList.remove('hidden');
+    }
+  });
+
+  email?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') btn?.click();
+  });
+</script>

@@ -1,0 +1,49 @@
+---
+const columns = [
+  { title: 'Explore', links: ['Recipes', 'Programs', 'Shop', 'Learn'] },
+  { title: 'Company', links: ['About', 'FAQ', 'Contact', 'Press'] },
+  { title: 'Legal', links: ['Privacy', 'Terms', 'Refunds'] },
+];
+---
+
+<footer class="bg-brand-dark pt-16 pb-10 px-7" style="border-top: 1px solid rgba(255,255,255,0.06);">
+  <div class="max-w-[1200px] mx-auto">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
+      <!-- Brand column -->
+      <div class="col-span-2 md:col-span-1">
+        <div class="font-blackletter text-[26px] text-white tracking-wide">PËRLA</div>
+        <p class="font-sans text-[13px] text-white/40 mt-3 max-w-[280px] leading-relaxed">
+          Science-led nutrition for people who believe beautiful food and optimal health are the
+          same thing.
+        </p>
+      </div>
+
+      <!-- Link columns -->
+      {columns.map((col) => (
+        <div>
+          <div class="font-sans text-[11px] tracking-[2.5px] uppercase text-white/30 mb-5 font-semibold">
+            {col.title}
+          </div>
+          {col.links.map((link) => (
+            <a
+              href="#"
+              class="block font-sans text-[13px] text-white/55 no-underline mb-3 hover:text-white transition-colors"
+            >
+              {link}
+            </a>
+          ))}
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="mt-14 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3" style="border-top: 1px solid rgba(255,255,255,0.06);">
+      <div class="font-sans text-[12px] text-white/25">
+        © 2026 PËRLA. All rights reserved.
+      </div>
+      <div class="font-sans text-[12px] text-white/25">
+        Designed by AKN.production
+      </div>
+    </div>
+  </div>
+</footer>

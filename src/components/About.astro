@@ -1,0 +1,69 @@
+---
+const pillars = [
+  { icon: '🧬', title: 'Science-First', desc: 'Every recommendation backed by research' },
+  { icon: '✨', title: 'Aesthetic Plates', desc: 'Because beautiful food is sustainable food' },
+  { icon: '📐', title: 'Structured Systems', desc: 'Meal plans, macros, and prep workflows' },
+  { icon: '🌿', title: 'Whole Ingredients', desc: 'Clean, anti-inflammatory, nutrient-dense' },
+];
+---
+
+<section id="about" class="bg-brand-warm-white py-[100px]">
+  <div class="max-w-[1200px] mx-auto px-7">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+      <!-- Portrait -->
+      <div class="lg:col-span-5 fade-up">
+        <div class="relative">
+          <img
+            src="/inzhu-portrait.png"
+            alt="Inzhu - Portrait"
+            class="rounded-md aspect-[3/4] object-cover w-full"
+          />
+          <div class="absolute -bottom-4 -right-4 bg-brand-sage text-white py-4 px-6 rounded font-serif text-[14px] tracking-wider">
+            Bioengineering Student
+          </div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="lg:col-span-7">
+        <div class="fade-up">
+          <span class="section-label">About</span>
+        </div>
+
+        <div class="fade-up delay-1">
+          <h2 class="section-heading text-[36px] sm:text-[44px] mt-4">
+            Where science meets<br />the art of eating well.
+          </h2>
+        </div>
+
+        <div class="fade-up delay-2">
+          <p class="body-text mt-7">
+            I'm Inzhu - a bioengineering student with an obsession for understanding how
+            food works at the molecular level and making that knowledge beautiful, practical, and
+            accessible. My approach isn't about restriction. It's about building systems that make
+            nourishing your body effortless and aesthetically satisfying.
+          </p>
+        </div>
+
+        <div class="fade-up delay-3">
+          <p class="body-text mt-4">
+            Every recipe, guide, and program I create is rooted in nutritional science - from
+            macronutrient ratios and glycemic responses to microbiome health and anti-inflammatory
+            protocols. I break down the complexity so you can eat with confidence.
+          </p>
+        </div>
+
+        <!-- Pillars grid -->
+        <div class="fade-up delay-4 grid grid-cols-2 gap-6 mt-10">
+          {pillars.map((p) => (
+            <div class="pt-5 border-t border-brand-border">
+              <div class="text-[20px] mb-2">{p.icon}</div>
+              <div class="font-sans text-[13px] font-semibold text-brand-dark tracking-wide">{p.title}</div>
+              <div class="font-sans text-[13px] text-brand-warm-gray mt-1 leading-relaxed">{p.desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

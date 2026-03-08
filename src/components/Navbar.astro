@@ -1,0 +1,116 @@
+---
+const links = [
+  { label: 'About', href: '#about' },
+  { label: 'Recipes', href: '#recipes' },
+  { label: 'Programs', href: '#programs' },
+  { label: 'Shop', href: '#shop' },
+  { label: 'Learn', href: '#learn' },
+];
+---
+
+<nav
+  id="navbar"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-400"
+  style="border-bottom: 1px solid transparent;"
+>
+  <div class="max-w-[1200px] mx-auto px-7 flex items-center justify-between h-[72px]">
+    <!-- Logo -->
+    <a
+      href="#"
+      class="font-blackletter text-[26px] text-brand-dark no-underline tracking-wide"
+    >
+      PËRLA
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-9">
+      {links.map((l) => (
+        <a
+          href={l.href}
+          class="font-sans text-[11px] tracking-[2.5px] uppercase text-brand-dark no-underline font-medium hover:text-brand-sage transition-colors"
+        >
+          {l.label}
+        </a>
+      ))}
+      <a href="#newsletter" class="pill pill-dark pill-sm">Get Started</a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="menu-toggle"
+      class="md:hidden flex flex-col gap-[5px] bg-transparent border-none cursor-pointer p-2"
+      aria-label="Menu"
+    >
+      <span class="block w-[22px] h-[2px] bg-brand-dark transition-all duration-300 origin-center" id="bar1"></span>
+      <span class="block w-[22px] h-[2px] bg-brand-dark transition-all duration-300" id="bar2"></span>
+      <span class="block w-[22px] h-[2px] bg-brand-dark transition-all duration-300 origin-center" id="bar3"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile fullscreen menu -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-40 bg-brand-warm-white flex flex-col items-center justify-center gap-8 transition-opacity duration-300 opacity-0 pointer-events-none"
+>
+  {links.map((l) => (
+    <a
+      href={l.href}
+      class="mobile-link font-sans text-[16px] tracking-[4px] uppercase text-brand-dark no-underline font-medium"
+    >
+      {l.label}
+    </a>
+  ))}
+  <a href="#newsletter" class="mobile-link pill pill-dark mt-4">Get Started</a>
+</div>
+
+<script>
+  // Scroll detection
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      navbar?.classList.add('navbar-scrolled');
+      navbar!.style.borderBottomColor = '#E8E0D6';
+    } else {
+      navbar?.classList.remove('navbar-scrolled');
+      navbar!.style.borderBottomColor = 'transparent';
+    }
+  });
+
+  // Mobile menu toggle
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const bar1 = document.getElementById('bar1');
+  const bar2 = document.getElementById('bar2');
+  const bar3 = document.getElementById('bar3');
+  let isOpen = false;
+
+  toggle?.addEventListener('click', () => {
+    isOpen = !isOpen;
+    if (isOpen) {
+      menu?.classList.remove('opacity-0', 'pointer-events-none');
+      menu?.classList.add('opacity-100', 'pointer-events-auto');
+      bar1!.style.transform = 'rotate(45deg) translateY(7px)';
+      bar2!.style.opacity = '0';
+      bar3!.style.transform = 'rotate(-45deg) translateY(-7px)';
+    } else {
+      menu?.classList.add('opacity-0', 'pointer-events-none');
+      menu?.classList.remove('opacity-100', 'pointer-events-auto');
+      bar1!.style.transform = 'none';
+      bar2!.style.opacity = '1';
+      bar3!.style.transform = 'none';
+    }
+  });
+
+  // Close menu on link click
+  document.querySelectorAll('.mobile-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      isOpen = false;
+      menu?.classList.add('opacity-0', 'pointer-events-none');
+      menu?.classList.remove('opacity-100', 'pointer-events-auto');
+      bar1!.style.transform = 'none';
+      bar2!.style.opacity = '1';
+      bar3!.style.transform = 'none';
+    });
+  });
+</script>

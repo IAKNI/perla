@@ -1,0 +1,44 @@
+---
+const colors = ['sage', 'warm', 'green', 'orange', 'cream', 'sage'];
+const platforms = [
+  { label: 'TikTok', handle: '@perla.eats' },
+  { label: 'Instagram', handle: '@perla.eats' },
+];
+---
+
+<section class="bg-brand-cream py-[100px]">
+  <div class="max-w-[1200px] mx-auto px-7">
+    <div class="text-center">
+      <div class="fade-up">
+        <span class="section-label">Follow the Journey</span>
+      </div>
+      <div class="fade-up delay-1">
+        <h2 class="section-heading text-[36px] sm:text-[40px] mt-4">
+          See it all come to life.
+        </h2>
+      </div>
+    </div>
+
+    <!-- Social grid -->
+    <div class="grid grid-cols-3 sm:grid-cols-6 gap-3 mt-12">
+      {colors.map((c, i) => (
+        <div class={`fade-up delay-${Math.min(i + 1, 5)} cursor-pointer hover:scale-[1.03] transition-transform`}>
+          <div class={`placeholder-${c} rounded-md aspect-square relative overflow-hidden`}>
+            <div class="absolute inset-0 bg-brand-dark/25"></div>
+            <span class="absolute inset-0 flex items-center justify-center font-serif text-[14px] tracking-[2px] uppercase text-white">Post</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Platform handles -->
+    <div class="fade-up delay-3 flex justify-center gap-8 mt-10">
+      {platforms.map((p) => (
+        <div class="font-sans text-[13px] text-brand-dark text-center">
+          <span class="font-semibold">{p.label}</span>{' '}
+          <span class="text-brand-taupe">{p.handle}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

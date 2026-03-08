@@ -1,0 +1,56 @@
+---
+const reviews = [
+  {
+    text: 'Testimonial example 1 - replace with a real client review about their experience with the nutrition approach and results.',
+    name: 'Example A.',
+    tag: 'Program',
+  },
+  {
+    text: 'Testimonial example 2 - replace with a real client review about meal plans, recipes, and how it changed their routine.',
+    name: 'Example B.',
+    tag: 'Recipes',
+  },
+  {
+    text: 'Testimonial example 3 - replace with a real client review about the science-based credibility and long-term impact.',
+    name: 'Example C.',
+    tag: 'Guide',
+  },
+];
+---
+
+<section class="bg-brand-warm-white py-[100px]">
+  <div class="max-w-[1200px] mx-auto px-7">
+    <div class="text-center">
+      <div class="fade-up">
+        <span class="section-label">What They Say</span>
+      </div>
+      <div class="fade-up delay-1">
+        <h2 class="section-heading text-[36px] sm:text-[44px] mt-4">
+          Real results.<br />Real people.
+        </h2>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-7 mt-14">
+      {reviews.map((r, i) => (
+        <div class={`fade-up delay-${i + 1}`}>
+          <div class="bg-brand-cream rounded-lg p-9 border border-brand-border h-full flex flex-col">
+            <!-- Stars -->
+            <div class="flex gap-1 mb-5">
+              {[1, 2, 3, 4, 5].map(() => (
+                <span class="text-brand-sage text-[14px]">★</span>
+              ))}
+            </div>
+
+            <p class="body-text text-[14px] italic flex-1">"{r.text}"</p>
+
+            <div class="mt-6 pt-4 border-t border-brand-border">
+              <div class="font-sans text-[13px] font-semibold text-brand-dark">{r.name}</div>
+              <div class="font-sans text-[11px] text-brand-taupe mt-0.5">{r.tag}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
